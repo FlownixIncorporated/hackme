@@ -18,4 +18,3 @@ def home():
 def dash():
     return """<script>alert('HI');window.location.href = "/";</script>"""
 
-webapp.run("0.0.0.0", 80, debug=True)
