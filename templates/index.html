@@ -1,0 +1,186 @@
+<html>
+    <style>
+
+    body{
+        background-color: black;
+    }
+
+    .style{display:none;}
+    * {font-family:consolas; text-decoration:none; text-align:center; color: #fff;}
+    
+    .container{
+        display: inline-block;
+    }
+
+    .p {
+        font-size: 2.5em;
+        margin: none;
+        margin-top: 9em;
+        width:100%;
+        overflow: hidden;
+        white-space: nowrap;
+        border-right: 0.15em solid;
+        animation: typing 2s steps(53),
+        cursor .5s step-end infinite alternate;
+        text-shadow: .5px .5px 1px black;
+    }
+
+    @keyframes cursor {
+        50% {border-color: transparent;}
+    }    
+    
+    @keyframes typing {
+        from {width: 0;}
+    }
+
+    .colour{ color:turquoise;
+        text-shadow: .5px .5px 1px turquoise;
+    }
+
+    ::selection{
+        background-color:#00000000;
+        color:#07de9d;
+        text-shadow: 1px 1px 1px #07de9d;
+    }
+	
+
+    #blob {
+        z-index: -2;
+        position: fixed;
+        background: turquoise;
+        border-radius: 100%;
+        height:20em;
+        aspect-ratio: 1;
+        pointer-events: none;
+        left:50%;
+        top:50%;
+        translate: -50% -50%;
+        filter: blur(250px);
+    }
+
+    .openLogin{
+        text-align: center;
+        text-decoration: none;
+        background-color: #111111a9;
+        color: turquoise;
+        border: none;
+        width: max-content;
+        height: max-content;
+        padding: .6em 2em;
+        border-radius: 5em;
+        font-size: 1.2em;
+        margin-top: 5em;
+        outline: none;
+        transition: background-color 1s, color 1s, box-shadow 1s, transform 1s;
+        opacity: 0;
+        animation: fadeAnimation 2.5s forwards;
+    }
+
+    @keyframes fadeAnimation {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+    }
+  
+    .openLogin:hover{
+        transform: translateY(-5px);
+        cursor: pointer;
+        outline: none;
+        border-color: turquoise;
+        background-color: turquoise;
+        color: black;
+        box-shadow: 0px 0px 10px turquoise;
+    }
+
+    form {
+        z-index: 2;
+        text-align: center;
+        padding: 1em;
+        border-radius: 1em;
+        margin: 0% 37% 0% 37%;
+    }
+
+    form > input {
+        background-color: #00000040;
+        border-radius: 2em;
+        width: 100%;
+        outline: none;
+        border: none;
+        height: 3em !important;
+        font-size: 1em; 
+        transition: border ease-in-out 4s;
+        color: #07de9d;
+    }
+
+    form > input:hover, form > input:focus {
+        outline: none;
+        border: #07de9d dashed 2px;
+    }
+
+    
+    form > input[type=submit] {
+        outline: none;
+        width: 70%;
+        border: none;
+        transition: border ease 1s;
+    }
+    
+    form > input[type=submit]:hover, form > input[type=submit]:focus {
+        outline: none;
+        border: #07de9d dashed 2px;
+        width: 70%;
+    }
+
+
+    form > * {
+        text-align: center;
+    }
+
+    ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+        color: #07de9e50;
+        opacity: 1; /* Firefox */
+    }
+
+    :-ms-input-placeholder { /* Internet Explorer 10-11 */
+        color: #07de9e50;
+    }
+
+    ::-ms-input-placeholder { /* Microsoft Edge */
+        color: #07de9e50;
+    }
+
+
+    </style>
+
+    <body>
+
+    <div id="blob"></div>
+        
+    <script>
+        const blob = document.getElementById("blob");
+
+        window.onpointermove = event => { 
+        const { clientX, clientY } = event;
+            
+        blob.animate({
+            left: `${clientX}px`,
+            top: `${clientY}px`
+        }, { duration: 1000, fill: "forwards" });
+    }</script>
+
+
+    <div class="container">
+        <p class="p">Hello. I am a pretty <span class="colour"> secure </span> website. Try stuff on me!</p>
+    </div>
+
+    <form method="post">
+        <input type="text" name="name" placeholder="Username"><br><br>
+        <input type="password" name="password" placeholder="Password"><br><br>
+        <input type="submit" value="Go!"><br><br>
+    </form>
+
+    </body>
+    </html>
